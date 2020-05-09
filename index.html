@@ -260,13 +260,13 @@
             <div class = 'nav-wrap' id = 'nav-wrap'>
                 <nav class="navbar">
                     <ul class="main-nav" id="js-menu">
-                        <li><a class="nav-links" id = "command">Click On Command</a></li>
-                        <li><a class="nav-links" id = "question">Click On Question</a></li>
-                        <li><a class="nav-links" id = "how_to">Click On How To</a></li>
-                        <li><a class="nav-links" id = "news">Click On News</a></li>
-                        <li><a class="nav-links" id = "reasons_why">Click On Reasons Why</a></li>
-                        <li><a class="nav-links" id = "testimonials">Click On Testimonial</a></li>
-                        <li><a class="nav-links" id = "all_headlines">Click On All Headlines</a></li>
+                        <li class = "tab"><a class="nav-links" id = "command">Command</a></li>
+                        <li class = "tab"><a class="nav-links" id = "question">Question</a></li>
+                        <li class = "tab"><a class="nav-links" id = "how_to">How To</a></li>
+                        <li class = "tab"><a class="nav-links" id = "news">News</a></li>
+                        <li class = "tab"><a class="nav-links" id = "reasons_why">Reasons Why</a></li>
+                        <li class = "tab"><a class="nav-links" id = "testimonials">Testimonial</a></li>
+                        <li class = "tab"><a class="nav-links" id = "all_headlines">All Headlines</a></li>
                     </ul>
                 </nav>
             </div>
@@ -314,7 +314,7 @@
             </div>
 
             <div class = 'main' id = 'headlines'>
-
+                <h2>Click On Each Tab Above In Order To View Your Headlines</h2>
             </div>
         </div>
 
@@ -624,7 +624,7 @@
                 }
             });
 
-            $(document).on('click', '.nav-links', function() {
+            $(document).on('click', '.tab', function() {
                 var benefit = document.getElementById("benefit").value;
                 var timeframe = document.getElementById("timeframe").value;
                 var results = document.getElementById("results").value;
@@ -634,11 +634,11 @@
                     document.getElementsByClassName('nav-links')[i].classList.remove('nav-link-active');
                 }
 
-                this.classList.add('nav-link-active');
+                this.children[0].classList.add('nav-link-active');
 
                 document.getElementById("headlines").innerHTML = "";
                 var headlines = document.createElement("div");
-                if (this.id === "command") {
+                if (this.children[0].id === "command") {
                     for (var i = 0; i < command.length; i++) {
                         headlines.appendChild(document.createElement("hr"));
                         var line = command[i].replace(/<0>/g, benefit);
@@ -651,7 +651,7 @@
                     }
                 }
 
-                else if (this.id === 'question') {
+                else if (this.children[0].id === 'question') {
                     for (var i = 0; i < question.length; i++) {
                         headlines.appendChild(document.createElement("hr"));
                         var line = question[i].replace(/<0>/g, benefit);
@@ -664,7 +664,7 @@
                     }
                 }
 
-                else if (this.id === 'how_to') {
+                else if (this.children[0].id === 'how_to') {
                     for (var i = 0; i < how_to.length; i++) {
                         headlines.appendChild(document.createElement("hr"));
                         var line = how_to[i].replace(/<0>/g, benefit);
@@ -677,7 +677,7 @@
                     }
                 }
 
-                else if (this.id === 'news') {
+                else if (this.children[0].id === 'news') {
                     for (var i = 0; i < news.length; i++) {
                         headlines.appendChild(document.createElement("hr"));
                         var line = news[i].replace(/<0>/g, benefit);
@@ -690,7 +690,7 @@
                     }
                 }
 
-                else if (this.id === 'reasons_why') {
+                else if (this.children[0].id === 'reasons_why') {
                     for (var i = 0; i < reasons_why.length; i++) {
                         headlines.appendChild(document.createElement("hr"));
                         var line = reasons_why[i].replace(/<0>/g, benefit);
@@ -703,7 +703,7 @@
                     }
                 }
 
-                else if (this.id === 'testimonials') {
+                else if (this.children[0].id === 'testimonials') {
                     for (var i = 0; i < testimonials.length; i++) {
                         headlines.appendChild(document.createElement("hr"));
                         var line = testimonials[i].replace(/<0>/g, benefit);
@@ -716,7 +716,7 @@
                     }
                 }
 
-                 else if (this.id === 'all_headlines') {
+                 else if (this.children[0].id === 'all_headlines') {
                      var all = [];
                      all.push(...command);
                      all.push(...question);
